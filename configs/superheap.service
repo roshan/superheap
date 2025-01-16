@@ -1,0 +1,14 @@
+[Unit]
+Description=Superheap RSS Service
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+ExecStart=/home/ubuntu/superheap/target/release/superheap serve -c /home/ubuntu/rss/superheap.json
+Restart=always
+RestartSec=5
+WorkingDirectory=/home/ubuntu
+
+[Install]
+WantedBy=multi-user.target
