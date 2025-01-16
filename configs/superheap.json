@@ -3,28 +3,25 @@
   "port": 10025,
   "dst_email_to_feed": [
     {
-      "display_name": "Porter Westling's Blog",
-      "to_email": "substack.pwestling@sub.domain.tld",
-      "feed_name": "substack.pwestling",
-      "feed_author": "Porter Westling"
-    },
-    {
       "display_name": "Roshan's Newsletter",
       "to_email": "substack.roshangeorge@sub.domain.tld",
       "feed_name": "substack.roshangeorge",
-      "feed_author": "Roshan George"
+      "feed_author": "Roshan George",
+      "original_url": "https://roshangeorge.substack.com"
     },
     {
       "display_name": "Critical Rice Theory",
       "to_email": "substack.dianey@sub.domain.tld",
       "feed_name": "critical.rice.theory",
-      "feed_author": "Diane Yap"
+      "feed_author": "Diane Yap",
+      "original_url": "https://dianeyap.substack.com"
     },
     {
       "display_name": "Superheap Test Feed",
       "to_email": "test@sub.domain.tld",
       "feed_name": "test-feed",
-      "feed_author": "Roshan George"
+      "feed_author": "Roshan George",
+      "original_url": "https://roshangeorge.substack.com"
     }
   ],
   "db_path": "/home/ubuntu/rss/feeds.db",

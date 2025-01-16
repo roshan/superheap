@@ -51,6 +51,7 @@ pub struct FeedConfig {
     pub to_email: String,
     pub feed_name: String,
     pub feed_author: String,
+    pub original_url: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -80,6 +81,7 @@ impl Config {
             to_email,
             feed_name,
             feed_author,
+            original_url: "https://example.com".to_string(),
         }];
 
         Config {
