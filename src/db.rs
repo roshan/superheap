@@ -44,10 +44,15 @@ impl Database {
             .conn
             .prepare(
                 "SELECT id, received_at, from_address, to_address, subject, content
-        FROM emails
-        WHERE to_address = ?
-        ORDER BY received_at DESC
-        LIMIT ?",
+FROM (
+   SELECT *,
+   ROW_NUMBER() OVER (PARTITION BY subject ORDER BY received_at DESC) as rn
+   FROM emails
+   WHERE to_address = ?
+)
+WHERE rn = 1
+ORDER BY id
+LIMIT ?",
             )?
             .query_map(
                 rusqlite::params![&to_address, &(num_entries_per_feed as i64)],
