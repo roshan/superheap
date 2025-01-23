@@ -1,4 +1,5 @@
 use anyhow::Context;
+use retry::{delay::Fixed, retry};
 use std::io::{BufRead, BufReader, Read, Write};
 use std::net::{TcpListener, TcpStream};
 use std::sync::atomic::{AtomicU64, Ordering};
@@ -14,9 +15,9 @@ static MAIL_ID: AtomicU64 = AtomicU64::new(1);
 fn handle_smtp_client(stream: &mut TcpStream, tx: Sender<Email>) -> anyhow::Result<()> {
     // Send greeting
     let response = "220 smtp.example.com Simple Mail Transfer Service Ready\r\n";
-    stream
-        .write(response.as_bytes())
-        .context("Failed to send greeting")?;
+    retry(Fixed::from_millis(100).take(3), || {
+        stream.write(response.as_bytes())
+    }).context("Failed to send ready message")?;
 
     let mut buffer = [0; 1024];
 

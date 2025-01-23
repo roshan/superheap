@@ -4,11 +4,12 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-rusqlite = "0.32.1"
+anyhow = "1.0.95"
+clap = { version = "4.4", features = ["derive"] }
+mail-parser = "0.9.4"
+retry = "2.0.0"
 rss = "2.0"
+rusqlite = "0.33.0"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-clap = { version = "4.4", features = ["derive"] }
 time = { version = "0.3.37", features = ["formatting", "parsing"] }
-anyhow = "1.0.95"
-mail-parser = "0.9.4"
