@@ -51,7 +51,7 @@ FROM (
    WHERE to_address = ?
 )
 WHERE rn = 1
-ORDER BY id
+ORDER BY id DESC
 LIMIT ?",
             )?
             .query_map(
